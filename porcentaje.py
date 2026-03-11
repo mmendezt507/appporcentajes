@@ -1,8 +1,8 @@
 import streamlit as st
 
-# Configuración de la página
+# Configuración de página
 st.set_page_config(
-    page_title="Calculadora Financiera de Porcentajes",
+    page_title="Calculadora de porcentajes",
     page_icon="💰",
     layout="centered"
 )
@@ -11,55 +11,52 @@ st.set_page_config(
 if "historial" not in st.session_state:
     st.session_state.historial = []
 
-# Estilos
+# Estilos compatibles con modo oscuro
 st.markdown("""
 <style>
 
 .main-title{
-    font-size:38px;
+    font-size:36px;
     font-weight:bold;
     text-align:center;
-    color:#1f4e79;
 }
 
 .subtitle{
     text-align:center;
-    color:gray;
+    opacity:0.8;
     margin-bottom:25px;
 }
 
 .calc-card{
-    background-color:#f7f9fc;
     padding:25px;
     border-radius:12px;
-    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+    border:1px solid rgba(128,128,128,0.3);
 }
 
 .result-box{
-    background-color:#e8f4ff;
     padding:20px;
     border-radius:10px;
     text-align:center;
-    font-size:24px;
+    font-size:26px;
     font-weight:bold;
+    border:1px solid rgba(128,128,128,0.4);
     margin-top:20px;
 }
 
 .history-card{
-    background-color:#ffffff;
     padding:20px;
     border-radius:10px;
-    box-shadow:0px 3px 8px rgba(0,0,0,0.08);
+    border:1px solid rgba(128,128,128,0.3);
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 # Título
-st.markdown('<p class="main-title">Calculadora Financiera</p>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">Calcula porcentajes y guarda el historial de operaciones</p>', unsafe_allow_html=True)
+st.markdown('<p class="main-title">Calculadora de porcentajes</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">Calcula porcentajes y guarda el historial</p>', unsafe_allow_html=True)
 
-# Tarjeta calculadora
+# Calculadora
 with st.container():
 
     st.markdown('<div class="calc-card">', unsafe_allow_html=True)
@@ -87,7 +84,7 @@ with st.container():
     if calcular:
         resultado = numero * (porcentaje / 100)
 
-        # Guardar en historial
+        # Guardar historial
         st.session_state.historial.insert(
             0,
             f"{porcentaje}% de {numero:.2f} = {resultado:.2f}"
